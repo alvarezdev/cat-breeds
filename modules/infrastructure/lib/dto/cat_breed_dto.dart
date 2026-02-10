@@ -14,8 +14,8 @@ class CatBreedDto {
   @JsonKey(name: 'description')
   final String description;
 
-  @JsonKey(name: 'origen')
-  final String origen;
+  @JsonKey(name: 'origin')
+  final String origin;
 
   @JsonKey(name: 'intelligence')
   final String intelligence;
@@ -26,14 +26,18 @@ class CatBreedDto {
   @JsonKey(name: 'life_span')
   final String lifeSpan;
 
+  @JsonKey(name: 'image_url')
+  final String imageUrl;
+
   CatBreedDto({
     required this.id,
     required this.name,
     required this.description,
-    required this.origen,
+    required this.origin,
     required this.intelligence,
     required this.adaptability,
     required this.lifeSpan,
+    required this.imageUrl,
   });
 
   factory CatBreedDto.fromJson(Map<String, dynamic> json) =>

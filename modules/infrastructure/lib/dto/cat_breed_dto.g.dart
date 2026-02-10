@@ -10,10 +10,11 @@ CatBreedDto _$CatBreedDtoFromJson(Map<String, dynamic> json) => CatBreedDto(
   id: json['id'] as String,
   name: json['name'] as String,
   description: json['description'] as String,
-  origen: json['origen'] as String,
+  origin: json['origin'] as String,
   intelligence: json['intelligence'] as String,
   adaptability: json['adaptability'] as String,
   lifeSpan: json['life_span'] as String,
+  imageUrl: json['image_url'] as String,
 );
 
 Map<String, dynamic> _$CatBreedDtoToJson(CatBreedDto instance) =>
@@ -21,8 +22,9 @@ Map<String, dynamic> _$CatBreedDtoToJson(CatBreedDto instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'origen': instance.origen,
+      'origin': instance.origin,
       'intelligence': instance.intelligence,
       'adaptability': instance.adaptability,
       'life_span': instance.lifeSpan,
+      'image_url': instance.imageUrl,
     };

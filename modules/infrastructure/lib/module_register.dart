@@ -2,15 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:infrastructure/core/constants/config_constants.dart';
 import 'package:infrastructure/core/network/client/api_client.dart';
 import 'package:infrastructure/core/network/client/connection_checker.dart';
-import 'package:infrastructure/core/network/client/dio_factory.dart';
 import 'package:injectable/injectable.dart';
 
 @module
 abstract class RegisterModule {
 
   @lazySingleton
-  Dio dio(DioFactory dioFactory) {
-    return Dio(
+  Dio dio() => Dio(
       BaseOptions(
         baseUrl: ConfigConstants.getBreeds,
         headers: {
@@ -20,7 +18,6 @@ abstract class RegisterModule {
         receiveTimeout: const Duration(seconds: ConfigConstants.receiveTimeout),
       ),
     );
-  }
   
   @lazySingleton
   ConnectionChecker get connectionChecker => ConnectionChecker.create();

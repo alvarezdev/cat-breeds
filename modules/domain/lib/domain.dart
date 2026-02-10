@@ -1,8 +1,6 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+
 library;
 
-export 'src/domain_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'model/cat_breed.dart';
+export 'repository/cat_breed_repository.dart';
+export 'use_case/cat_breed_use_case.dart';
