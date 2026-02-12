@@ -1,0 +1,20 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Cat Breeds",
+  "@appTitle": {},
+  "searchHint": "Search breed...",
+  "@searchHint": {},
+  "imageNotAvailable": "Image not available",
+  "@imageNotAvailable": {},
+  "originLabel": "Country of origin:",
+  "@originLabel": {},
+  "intelligenceLabel": "Intelligence:",
+  "@intelligenceLabel": {},
+  "adaptabilityLabel": "Adaptability:",
+  "@adaptabilityLabel": {},
+  "lifeSpanLabel": "Life expectancy:",
+  "@lifeSpanLabel": {},
+  "moreInfoLabel": "More...",
+  "@moreInfoLabel": {}
+}

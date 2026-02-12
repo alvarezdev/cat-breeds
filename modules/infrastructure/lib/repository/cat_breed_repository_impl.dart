@@ -23,7 +23,7 @@ class CatBreedRepositoryImpl implements CatBreedRepository {
             intelligence: item.intelligence,
             adaptability: item.adaptability,
             lifeSpan: item.lifeSpan,
-            imageUrl: item.imageUrl,
+            imageUrl: item.image?.url,
           ),
         )
         .toList();

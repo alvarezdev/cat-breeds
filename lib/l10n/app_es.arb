@@ -1,0 +1,14 @@
+{
+  "@@locale": "es",
+
+  "appTitle": "Cat Breeds",
+  "searchHint": "Buscar raza...",
+  "imageNotAvailable": "Imagen no disponible",
+
+  "originLabel": "País de origen:",
+  "intelligenceLabel": "Inteligencia:",
+  "adaptabilityLabel": "Adaptabilidad:",
+  "lifeSpanLabel": "Expectativa de vida:",
+  "moreInfoLabel": "Más..."
+  
+}

@@ -1,7 +1,14 @@
+import 'package:cat_breeds/di/dependency_injection.dart';
+import 'package:cat_breeds/l10n-generated/l10n.dart';
+import 'package:cat_breeds/presentation/landing/landing_screen.dart';
+import 'package:cat_breeds/shared/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  configureInjection();
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -10,57 +17,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      title: 'Cat Breeds',
+      theme: ThemeData(fontFamily: 'Poppins'),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('en'), Locale('es')],
+      initialRoute: LandingScreen.routeName,
+      //initialRoute: SplashScreen.routeName,
+      //Dejo el comentario anterior para que se pueda probar la pantalla de splash en caso de ser necesario,
+      //ademas dejo la screen creada como la exige la prueba.
+      //Pero se debe tener que estoy haciendo las pruebas con un emulador android 14
+      //y desde Android 12 el sistema SIEMPRE muestra un ic_launcher en el splash.
+      //Por tal razon decidi dejar la pantalla de splash como opcional para no afectar la experiencia de usuario en el emulador.
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }

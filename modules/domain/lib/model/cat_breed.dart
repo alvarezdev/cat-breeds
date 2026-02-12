@@ -1,12 +1,12 @@
 class CatBreed {
-  final String id;
-  final String name;
-  final String description;
-  final String origin;
-  final String intelligence;
-  final String adaptability;
-  final String lifeSpan;
-  final String imageUrl;
+  final String? id;
+  final String? name;
+  final String? description;
+  final String? origin;
+  final int? intelligence;
+  final int? adaptability;
+  final String? lifeSpan;
+  final String? imageUrl;
 
   CatBreed({
     required this.id,
