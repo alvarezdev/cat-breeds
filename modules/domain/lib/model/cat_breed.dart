@@ -17,5 +17,16 @@ class CatBreed {
     required this.adaptability,
     required this.lifeSpan,
     required this.imageUrl,
-  });
+  }){
+    _validate();
+  }
+
+  void _validate() {
+    if (intelligence! < 1 || intelligence! > 5) {
+      throw ArgumentError('Intelligence must be between 1 and 5');
+    }
+    if (adaptability! < 1 || adaptability! > 5) {
+      throw ArgumentError('Adaptability must be between 1 and 5');
+    }
+  }
 }

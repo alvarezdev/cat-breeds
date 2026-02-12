@@ -1,4 +1,4 @@
-import 'package:domain/model/cat_breed.dart';
+import 'package:domain/domain.dart';
 
 abstract class CatBreedRepository {
   Future<List<CatBreed>> getCatBreeds();
