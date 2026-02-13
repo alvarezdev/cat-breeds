@@ -16,8 +16,14 @@ class CatBreedsViewModel extends AsyncNotifier<List<CatBreed>> {
 
   @override
   Future<List<CatBreed>> build() async {
-    _allBreeds = await _catBreedUseCase.getCatBreeds();
-    return _allBreeds;
+    final result = await _catBreedUseCase.getCatBreeds();
+
+    if (result.isRight) {
+      _allBreeds = result.right!;
+      return _allBreeds;
+    } else {
+      throw result.left!;
+    }
   }
 
   void onSearchChanged(String query) {

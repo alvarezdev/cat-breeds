@@ -59,6 +59,10 @@ class CatBreedCard extends StatelessWidget {
                           style: TextStyle(color: Colors.red),
                         );
                       },
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return const Center(child: CircularProgressIndicator());
+                      },
                     ),
                   ),
                   SizedBox(height: Dimensions.d16),

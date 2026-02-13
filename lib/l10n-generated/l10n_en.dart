@@ -31,4 +31,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get moreInfoLabel => 'More...';
+
+  @override
+  String get noConnectionError =>
+      'No internet connection. Please check your connection and try again.';
+
+  @override
+  String get serverError =>
+      'An error occurred while fetching data. Please try again later.';
+
+  @override
+  String get unknownError =>
+      'An unexpected error occurred. Please try again later.';
 }

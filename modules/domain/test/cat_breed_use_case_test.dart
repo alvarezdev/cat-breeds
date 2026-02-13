@@ -1,6 +1,8 @@
 import 'package:domain/use_case/cat_breed_use_case.dart';
 import 'package:domain/repository/cat_breed_repository.dart';
 import 'package:domain/model/cat_breed.dart';
+import 'package:domain/core/result.dart';
+import 'package:domain/failures/failures.dart';
 import 'package:test/test.dart';
 
 import 'builder/cat_breed_builder.dart';
@@ -11,13 +13,18 @@ class _MockCatBreedRepositorySuccess implements CatBreedRepository {
   _MockCatBreedRepositorySuccess(this.catBreeds);
 
   @override
-  Future<List<CatBreed>> getCatBreeds() async => catBreeds;
+  Future<Result<Failure, List<CatBreed>>> getCatBreeds() async =>
+      Result.right(catBreeds);
 }
 
 class _MockCatBreedRepositoryFailure implements CatBreedRepository {
+  final Failure failure;
+
+  _MockCatBreedRepositoryFailure(this.failure);
+
   @override
-  Future<List<CatBreed>> getCatBreeds() async =>
-      throw Exception('Error fetching cat breeds');
+  Future<Result<Failure, List<CatBreed>>> getCatBreeds() async =>
+      Result.left(failure);
 }
 
 void main() {
@@ -55,26 +62,25 @@ void main() {
       final result = await useCase.getCatBreeds();
 
       // Assert
-      expect(result, catBreeds);
-      expect(result.length, 2);
-      expect(result[0].name, 'Persian');
-      expect(result[1].name, 'Siamese');
+      expect(result.isRight, true);
+      expect(result.right, catBreeds);
+      expect(result.right?.length, 2);
+      expect(result.right?[0].name, 'Persian');
+      expect(result.right?[1].name, 'Siamese');
     });
 
-    test('getCatBreeds should throw an exception when repository fails', () async {
+    test('getCatBreeds should return failure when repository fails', () async {
       // Arrange
-      final mockRepository = _MockCatBreedRepositoryFailure();
+      final failure = NetworkFailure();
+      final mockRepository = _MockCatBreedRepositoryFailure(failure);
       final useCase = CatBreedUseCase(repository: mockRepository);
 
-      // Act & Assert
-      expect(
-        () => useCase.getCatBreeds(),
-        throwsA(isA<Exception>().having(
-          (e) => e.toString(),
-          'message',
-          contains('Error fetching cat breeds'),
-        )),
-      );
+      // Act
+      final result = await useCase.getCatBreeds();
+
+      // Assert
+      expect(result.isLeft, true);
+      expect(result.left, isA<NetworkFailure>());
     });
 
     test('getCatBreeds should return empty list when repository returns empty list',
@@ -87,7 +93,8 @@ void main() {
       final result = await useCase.getCatBreeds();
 
       // Assert
-      expect(result, isEmpty);
+      expect(result.isRight, true);
+      expect(result.right, isEmpty);
     });
   });
 }

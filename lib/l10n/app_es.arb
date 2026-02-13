@@ -9,6 +9,9 @@
   "intelligenceLabel": "Inteligencia:",
   "adaptabilityLabel": "Adaptabilidad:",
   "lifeSpanLabel": "Expectativa de vida:",
-  "moreInfoLabel": "Más..."
+  "moreInfoLabel": "Más...",
+  "noConnectionError": "Sin conexión a internet. Por favor, revise su conexión e intente nuevamente.",
+  "serverError": "Ocurrió un error al obtener los datos. Por favor, intente nuevamente más tarde.",
+  "unknownError": "Ocurrió un error inesperado. Por favor, intente nuevamente más tarde."
   
 }

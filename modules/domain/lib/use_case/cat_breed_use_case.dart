@@ -4,12 +4,10 @@ import 'package:injectable/injectable.dart';
 @injectable
 class CatBreedUseCase {
   final CatBreedRepository _repository;
+  CatBreedUseCase({required CatBreedRepository repository})
+      : _repository = repository;
 
-  CatBreedUseCase({
-    required CatBreedRepository repository,
-  }) : _repository = repository;
-
-  Future<List<CatBreed>> getCatBreeds() {
+  Future<Result<Failure, List<CatBreed>>> getCatBreeds() {
     return _repository.getCatBreeds();
   }
 }

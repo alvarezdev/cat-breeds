@@ -16,5 +16,11 @@
   "lifeSpanLabel": "Life expectancy:",
   "@lifeSpanLabel": {},
   "moreInfoLabel": "More...",
-  "@moreInfoLabel": {}
+  "@moreInfoLabel": {},
+  "noConnectionError": "No internet connection. Please check your connection and try again.",
+  "@noConnectionError": {},
+  "serverError": "An error occurred while fetching data. Please try again later.",
+  "@serverError": {},
+  "unknownError": "An unexpected error occurred. Please try again later.",
+  "@unknownError": {}
 }

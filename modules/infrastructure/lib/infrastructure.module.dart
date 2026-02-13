@@ -9,7 +9,7 @@ import 'dart:async' as _i687;
 import 'package:dio/dio.dart' as _i361;
 import 'package:domain/repository/cat_breed_repository.dart' as _i187;
 import 'package:infrastructure/core/network/client/api_client.dart' as _i463;
-import 'package:infrastructure/core/network/client/connection_checker.dart'
+import 'package:infrastructure/core/network/connection_checker.dart'
     as _i114;
 import 'package:infrastructure/datasource/cat_breed_datasource.dart' as _i803;
 import 'package:infrastructure/mappers/mapper_module.dart' as _i747;

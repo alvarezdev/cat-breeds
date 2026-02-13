@@ -145,6 +145,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'More...'**
   String get moreInfoLabel;
+
+  /// No description provided for @noConnectionError.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection. Please check your connection and try again.'**
+  String get noConnectionError;
+
+  /// No description provided for @serverError.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while fetching data. Please try again later.'**
+  String get serverError;
+
+  /// No description provided for @unknownError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred. Please try again later.'**
+  String get unknownError;
 }
 
 class _AppLocalizationsDelegate

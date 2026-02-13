@@ -1,18 +1,19 @@
-
 import 'package:dio/dio.dart';
-import 'package:infrastructure/core/network/client/connection_checker.dart';
+import 'package:infrastructure/core/exception/exception.dart';
+import 'package:infrastructure/core/network/connection_checker.dart';
 
 class ApiClient {
   final Dio _dio;
   final ConnectionChecker _connectionChecker;
 
-  ApiClient({
-    required Dio dio,
-    required ConnectionChecker connectionChecker,
-  })  : _dio = dio,
-        _connectionChecker = connectionChecker;
+  ApiClient({required Dio dio, required ConnectionChecker connectionChecker})
+    : _dio = dio,
+      _connectionChecker = connectionChecker;
 
-  Future<dynamic> get(String endpoint, {Map<String, dynamic>? queryParams}) async {
+  Future<dynamic> get(
+    String endpoint, {
+    Map<String, dynamic>? queryParams,
+  }) async {
     return _request(() => _dio.get(endpoint, queryParameters: queryParams));
   }
 
@@ -30,15 +31,13 @@ class ApiClient {
 
   Future<dynamic> _request(Future<Response> Function() request) async {
     if (!await _connectionChecker.hasConnection) {
-      throw Exception('No internet connection');
+      throw NoConnectionException();
     }
     try {
       final response = await request();
-
-      final data = response.data;
-      return data;
+      return response.data;
     } on DioException catch (e) {
-      throw Exception('Network error: ${e.message}');
+      throw ServerException(e.message ?? 'Unknown error');
     }
   }
 }
