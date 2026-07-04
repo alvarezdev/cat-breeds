@@ -1,4 +1,3 @@
-//@GeneratedMicroModule;DomainPackageModule;package:domain/domain.module.dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // coverage:ignore-file
